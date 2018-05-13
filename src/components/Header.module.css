@@ -1,0 +1,57 @@
+.header {
+    padding: 0 3rem;
+    display: flex;
+    justify-content: space-between;
+    background: #222222;
+}
+
+.logo {
+    color: #f8f8f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav {
+    display: flex;
+    z-index: 4;
+}
+
+.nav a {
+    color: #f8f8f8;
+    text-decoration: none;
+    padding: 0.5rem 1.5rem;
+}
+
+.menuButton {
+    cursor: pointer;
+}
+
+@media(max-width: 700px) {
+    .header {
+        padding: 0;
+        flex-direction: column;
+    }
+
+    .logo {
+        position: relative;
+        height: 3rem;
+        padding: 0 3rem;
+        justify-content: space-between;
+        background: #222222;
+        z-index: 5;
+    }
+
+    .nav {
+        flex-direction: column;
+        position: absolute;
+        width: 100%;
+        top: 3rem;
+        background: #222222;
+        transition: transform 300ms ease-in-out;
+    }
+
+    .navHidden {
+        transform: translateY(-100%);
+    }
+}
