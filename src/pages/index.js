@@ -4,12 +4,12 @@ import Container from '../components/Container';
 
 const Index = (props) => {
   const { data } = props;
-  console.log(data);
   
   return (
     <div>
       <Img
-          sizes={data.bgImage.childImageSharp.sizes}
+        style={{maxHeight: '55vh'}}
+        sizes={data.bgImage.childImageSharp.sizes}
       />
       <Container>
         <h1>Index Page</h1>
