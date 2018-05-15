@@ -2,8 +2,7 @@ import React from 'react';
 import Img from 'gatsby-image';
 import Container from '../components/Container';
 
-const Index = (props) => {
-  const { data } = props;
+const Index = ({ data }) => {
   
   return (
     <div>

@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
     title: 'Site Title from Metadata'
@@ -16,6 +18,13 @@ module.exports = {
       options: {
         name: 'src',
         path: `${__dirname}/src/`
+      }
+    },
+    {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        spaceId: process.env.SPACEID,
+        accessToken: process.env.ACCESSTOKEN
       }
     }
   ]
