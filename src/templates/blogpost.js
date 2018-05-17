@@ -1,10 +1,14 @@
 import React from 'react';
 import Img from 'gatsby-image';
+import Link from 'gatsby-link';
 
 import Container from '../components/Container';
 
-const BlogPost = ({ data }) => {
-  console.log(data);
+const BlogPost = ({ data, pathContext, location }) => {
+  // console.log(data);
+  // console.log(pathContext);
+  // console.log(location);
+  const { prev, next } = pathContext;
 
   return (
     <div>
@@ -16,6 +20,11 @@ const BlogPost = ({ data }) => {
         <h2>{data.contentfulBlogPost.title}</h2>
         <p>{data.contentfulBlogPost.createdAt}</p>
         <p>{data.contentfulBlogPost.body.body}</p>
+        <hr/>
+        <div>
+          {prev && <Link to={prev.slug}>Previous Post</Link>}
+          {next && <Link to={next.slug}>Next Post</Link>}
+        </div>
       </Container>
     </div>
   );

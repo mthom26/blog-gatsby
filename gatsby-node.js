@@ -29,12 +29,16 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
           reject(result.errors);
         }
 
-        result.data.allContentfulBlogPost.edges.map(({ node }) => {
+        const posts = result.data.allContentfulBlogPost.edges;
+
+        posts.forEach(({ node }, index) => {
           createPage({
             path: node.slug,
             component: blogPostTemplate,
             context: {
-              slug: node.slug
+              slug: node.slug,
+              prev: index === 0 ? null : posts[index-1].node,
+              next: index === (posts.length - 1) ? null : posts[index+1].node
             }
           });
         });
