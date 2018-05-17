@@ -1,19 +1,16 @@
 import React from 'react';
 
+import Container from '../components/Container';
+import BlogPost from '../components/BlogPost';
+
 const Blog = ({ data }) => {
   console.log(data);
   return (
-    <div>
+    <Container>
       {data.allContentfulBlogPost.edges.map(({ node }) => {
-        return (
-          <div>
-            <h2>{node.title}</h2>
-            <span>{node.createdAt}</span>
-            <p>{node.body.body}</p>
-          </div>
-        );
+        return <BlogPost key={node.id} postData={node}/>
       })}
-    </div>
+    </Container>
   );
 };
 
@@ -24,6 +21,7 @@ export const query = graphql`
         node {
           title
           slug
+          id
           body {
             body
           }
@@ -33,4 +31,5 @@ export const query = graphql`
     }
   }
 `;
+
 export default Blog;
