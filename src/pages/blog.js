@@ -4,7 +4,7 @@ import Container from '../components/Container';
 import BlogPost from '../components/BlogPost';
 
 const Blog = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   return (
     <Container>
       {data.allContentfulBlogPost.edges.map(({ node }) => {
@@ -22,6 +22,11 @@ export const query = graphql`
           title
           slug
           id
+          coverImage {
+            sizes(maxWidth: 1000) {
+              srcSet
+            }
+          }
           body {
             body
           }
