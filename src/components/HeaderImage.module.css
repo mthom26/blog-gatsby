@@ -1,0 +1,15 @@
+.headerWrapper {
+  overflow: hidden;
+}
+
+.zeroHeight {
+  height: 0;
+}
+
+.smallHeight {
+  height: 30vh;
+}
+
+.largeHeight {
+  height: 70vh;
+}

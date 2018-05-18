@@ -8,27 +8,11 @@ const Index = ({ data, location }) => {
   
   return (
     <div>
-      <Img
-        style={{maxHeight: '55vh'}}
-        sizes={data.bgImage.childImageSharp.sizes}
-      />
       <Container>
         <h1>Index Page</h1>
       </Container>
     </div>
   );
 };
-
-export const query = graphql`
-  query indexQuery {
-    bgImage: file(relativePath: { eq: "images/indexbg.jpg" }) {
-      childImageSharp {
-        sizes(maxWidth: 1920) {
-          ...GatsbyImageSharpSizes
-        }
-      }
-    }
-  }
-`;
 
 export default Index;
