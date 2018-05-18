@@ -2,6 +2,8 @@ import React from 'react';
 import Img from 'gatsby-image';
 import Container from '../components/Container';
 
+import './index.css';
+
 const Index = ({ data }) => {
   
   return (

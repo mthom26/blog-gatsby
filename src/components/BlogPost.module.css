@@ -1,12 +1,14 @@
 .blogpost {
-  border: 1px solid rgba(0,0,0,0.4);
+  background: #f8f8f8;
+  border: 1px solid rgba(0,0,0,0.1);
   border-radius: 8px;
   margin-top: 2rem;
+  box-shadow: 5px 4px 20px rgba(0,0,0,0.1);
   transition: transform 400ms ease-in-out, box-shadow 400ms ease-in-out;
 }
 
 .blogpost:hover {
-  transform: scale(1.05);
+  transform: scale(1.03);
   box-shadow: 5px 4px 20px rgba(0,0,0,0.3);
 }
 
@@ -27,4 +29,8 @@
 
 .imageContainer {
   position: relative;
+}
+
+.date {
+  color: rgba(0,0,0,0.5);
 }
