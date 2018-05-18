@@ -30,7 +30,10 @@ export const query = graphql`
           body {
             body
           }
-          createdAt
+          excerpt {
+            excerpt
+          }
+          createdAt(formatString: "DD-MM-YYYY")
         }
       }
     }

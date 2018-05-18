@@ -7,19 +7,21 @@ import styles from './BlogPost.module.css';
 const BlogPost = ({ postData }) => {
   console.log(postData);
   return (
-    <div className={styles.blogpost}>
-      <div className={styles.imageContainer}>
-        <h2 className={styles.title}>{postData.title}</h2>
-        <Img
-          style={{height: '35vh'}}
-          sizes={postData.coverImage.sizes}
-        />
+    <Link to={postData.slug}>
+      <div className={styles.blogpost}>
+        <div className={styles.imageContainer}>
+          <h2 className={styles.title}>{postData.title}</h2>
+          <Img
+            style={{height: '35vh'}}
+            sizes={postData.coverImage.sizes}
+          />
+        </div>
+          
+        <div className={styles.content}>
+          <p>{postData.excerpt.excerpt}</p>
+        </div>
       </div>
-        
-      <div className={styles.content}>
-        <Link to={postData.slug}>Read More</Link>
-      </div>
-    </div>
+    </Link>
   );
 };
 

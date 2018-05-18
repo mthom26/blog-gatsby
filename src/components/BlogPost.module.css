@@ -1,7 +1,13 @@
 .blogpost {
-  border: 1px solid grey;
+  border: 1px solid rgba(0,0,0,0.4);
   border-radius: 8px;
   margin-top: 2rem;
+  transition: transform 400ms ease-in-out, box-shadow 400ms ease-in-out;
+}
+
+.blogpost:hover {
+  transform: scale(1.05);
+  box-shadow: 5px 4px 20px rgba(0,0,0,0.3);
 }
 
 .content {
