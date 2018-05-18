@@ -5,7 +5,7 @@ import Img from 'gatsby-image';
 import styles from './BlogPost.module.css';
 
 const BlogPost = ({ postData }) => {
-  console.log(postData);
+  // console.log(postData);
   return (
     <Link to={postData.slug}>
       <div className={styles.blogpost}>

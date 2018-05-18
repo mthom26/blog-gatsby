@@ -4,7 +4,7 @@ import Container from '../components/Container';
 
 import './index.css';
 
-const Index = ({ data }) => {
+const Index = ({ data, location }) => {
   
   return (
     <div>
@@ -21,7 +21,7 @@ const Index = ({ data }) => {
 
 export const query = graphql`
   query indexQuery {
-    bgImage: file(relativePath: { eq: "images/mainbg.png" }) {
+    bgImage: file(relativePath: { eq: "images/indexbg.jpg" }) {
       childImageSharp {
         sizes(maxWidth: 1920) {
           ...GatsbyImageSharpSizes
