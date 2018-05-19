@@ -8,7 +8,7 @@ class HeaderImage extends React.Component {
   constructor(props) {
     super(props);
   }
-
+ 
   componentDidUpdate(prevProps, prevState) {
     // Header Image component should adjust height based on the current path
     const { pathname } = this.props.location;
