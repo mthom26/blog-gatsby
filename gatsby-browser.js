@@ -5,19 +5,15 @@ import createHistory from "history/createBrowserHistory";
 import Header from './src/components/Header';
 import Footer from './src/components/Footer';
 import HeaderImage from './src/components/HeaderImage';
+import getTransition from './src/utils/getTransition';
 
 const timeout = 1000;
 const historyExitingEventType = `history::exiting`;
 
 const defaultStyle = {
-  transition: `opacity ${timeout}ms ease-in-out`,
+  transition: `opacity ${timeout}ms ease-in-out, transform ${timeout}ms ease-in-out`,
+  transform: 'translateX(80%)',
   opacity: 0
-};
-
-const transitionStyles = {
-  entering: { opacity: 0 },
-  entered: { opacity: 1 },
-  exiting: { opacity: 0 }
 };
 
 const getUserConfirmation = (pathname, callback) => {
@@ -84,21 +80,26 @@ class ReplaceComponentRenderer extends React.Component {
       ...this.props,
       ...this.props.pageResources.json
     });
+
     return(
       <div>
         <Header />
         <Transition {...transitionProps}>
           {
-            (status) => (
-              <div
+            (status) => {
+              const styles = getTransition(status);
+              console.log(styles);
+              return(
+                <div
                 style={{
                   ...defaultStyle,
-                  ...transitionStyles[status]
+                  ...styles
                 }}
-              >
-                {Page}
-              </div>
-            )
+                >
+                  {Page}
+                </div>
+              )
+            }
           }
         </Transition>
       </div>
