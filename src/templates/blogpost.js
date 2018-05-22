@@ -13,6 +13,7 @@ class BlogPost extends React.Component {
     super(props);
   }
 
+  /*
   componentDidMount() {
     // Move in from the right after the blogpost is loaded
     this.wrapper.animate([
@@ -24,7 +25,7 @@ class BlogPost extends React.Component {
       easing: 'ease-in-out',
       iterations: 1
     });
-  }
+  }*/
 
   render() {
     const { prev, next } = this.props.pathContext;
