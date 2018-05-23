@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import HeaderImage from '../components/HeaderImage';
 
+/*
 class Layout extends React.Component {
   constructor(props) {
     super(props);
@@ -49,6 +50,18 @@ class Layout extends React.Component {
     );
   } 
 }
+*/
+
+const Layout = (props) => {
+  //console.log(props);
+  return (
+    <div>
+        <Header />
+        {props.children()}
+        <Footer />
+      </div>
+  );
+};
 
 export const query = graphql`
   query layoutQuery {

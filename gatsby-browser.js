@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { createElement } from 'react';
 import { Transition } from "react-transition-group";
 import createHistory from "history/createBrowserHistory";
 
-import Header from './src/components/Header';
-import Footer from './src/components/Footer';
-import HeaderImage from './src/components/HeaderImage';
+//import Header from './src/components/Header';
+//import Footer from './src/components/Footer';
+//import HeaderImage from './src/components/HeaderImage';
 import getTransition from './src/utils/getTransition';
 
 const timeout = 1000;
@@ -75,31 +75,26 @@ class ReplaceComponentRenderer extends React.Component {
       in: !this.state.exiting,
       key: this.props.location.key,
     };
-
+    /*
     const Page = React.createElement(this.props.pageResources.component, {
       ...this.props,
       ...this.props.pageResources.json
     });
-
+    */
     return(
       <div>
-        <Header />
         <Transition {...transitionProps}>
           {
-            (status) => {
-              const styles = getTransition(status);
-              console.log(styles);
-              return(
-                <div
-                style={{
-                  ...defaultStyle,
-                  ...styles
-                }}
-                >
-                  {Page}
-                </div>
-              )
-            }
+            (status) => createElement(this.props.pageResources.component, {
+              ...this.props,
+              ...this.props.pageResources.json,
+              transition: {
+                status,
+                timeout,
+                style: getTransition({ status, timeout }),
+                nextPageResources: this.state.nextPageResources,
+              },
+            })
           }
         </Transition>
       </div>
@@ -109,7 +104,7 @@ class ReplaceComponentRenderer extends React.Component {
 
 exports.replaceComponentRenderer = ({ props, loader }) => {
   if (props.layout) {
-    //return undefined
+    return undefined
   }
   return React.createElement(ReplaceComponentRenderer, { ...props, loader })
 };

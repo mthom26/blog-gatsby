@@ -3,14 +3,17 @@ import React from 'react';
 import Container from '../components/Container';
 import BlogPost from '../components/BlogPost';
 
-const Blog = ({ data }) => {
+const Blog = (props) => {
   // console.log(data);
+  const { data, transition } = props;
   return (
-    <Container>
-      {data.allContentfulBlogPost.edges.map(({ node }) => {
-        return <BlogPost key={node.id} postData={node}/>
-      })}
-    </Container>
+    <div style={props.transition&& props.transition.style}>
+      <Container>
+        {data.allContentfulBlogPost.edges.map(({ node }) => {
+          return <BlogPost key={node.id} postData={node}/>
+        })}
+      </Container>
+    </div>
   );
 };
 

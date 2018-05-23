@@ -4,10 +4,10 @@ import Container from '../components/Container';
 
 import './index.css';
 
-const Index = ({ data, location }) => {
+const Index = (props) => {
   
   return (
-    <div>
+    <div style={props.transition && props.transition.style}>
       <Container>
         <h1>Index Page</h1>
       </Container>

@@ -29,10 +29,11 @@ class BlogPost extends React.Component {
 
   render() {
     const { prev, next } = this.props.pathContext;
-    const { data, location } = this.props;
+    const { data, location, transition } = this.props;
     return (
       <div
         ref={(wrapper) => this.wrapper = ReactDOM.findDOMNode(wrapper)}
+        style={transition && transition.style}
       >
         <Img
           style={{minHeight: '40vh'}}

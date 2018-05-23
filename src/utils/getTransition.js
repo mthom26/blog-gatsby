@@ -1,4 +1,4 @@
-const getTransitionStyles = () => {
+const getTransitionStyles = (timeout) => {
   return (
     {
       entering: {
@@ -7,18 +7,20 @@ const getTransitionStyles = () => {
       },
       entered: {
         transform: 'translateX(0)',
+        transition: `transform ${timeout}ms ease-in, opacity ${timeout}ms ease-in`,
         opacity: 1
       },
       exiting: {
         transform: 'translateX(-80%)',
+        transition: `transform ${timeout}ms ease-in,  opacity ${timeout}ms ease-in`,
         opacity: 0
       }
     }
   );
 };
 
-const getTransition = (status) => {
-  return getTransitionStyles()[status];
+const getTransition = ({timeout, status}) => {
+  return getTransitionStyles(timeout)[status];
 };
 
 export default getTransition;

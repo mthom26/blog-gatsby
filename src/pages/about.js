@@ -1,11 +1,13 @@
 import React from 'react';
 import Container from '../components/Container';
 
-const About = () => {
+const About = (props) => {
   return (
-    <Container>
-      <h1>About Page</h1>
-    </Container>
+    <div style={props.transition && props.transition.style}>
+      <Container>
+        <h1>About Page</h1>
+      </Container>
+    </div>
   );
 };
 
