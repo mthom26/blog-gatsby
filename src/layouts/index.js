@@ -54,9 +54,12 @@ class Layout extends React.Component {
 
 const Layout = (props) => {
   //console.log(props);
+  const { location, data } = props;
+
   return (
     <div>
         <Header />
+        <HeaderImage location={location} data={data}/>
         {props.children()}
         <Footer />
       </div>

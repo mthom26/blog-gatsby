@@ -57,8 +57,8 @@ class ReplaceComponentRenderer extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(this.props.location);
-    console.log(nextProps.location);
+    //console.log(this.props.location);
+    //console.log(nextProps.location);
     if (this.props.location.key !== nextProps.location.key) {
       this.setState({ exiting: false, nextPageResources: {} })
     }
