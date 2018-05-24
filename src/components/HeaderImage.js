@@ -18,12 +18,12 @@ class HeaderImage extends React.Component {
     
     // set the new and old height based on the old and new locations
     if(pathname === '/') {
-      newHeight = '70vh';
+      newHeight = '100vh';
     } else if(pathname === '/blog' || pathname === '/about') {
       newHeight = '30vh';
     }
     if(prevpathname === '/') {
-      oldHeight = '70vh';
+      oldHeight = '100vh';
     } else if(prevpathname === '/blog' || prevpathname === '/about') {
       oldHeight = '30vh';
     }
@@ -60,7 +60,7 @@ class HeaderImage extends React.Component {
         className={`${styles.headerWrapper} ${headerHeight}`}
       >
         <Img
-          style={{maxHeight: '55vh'}}
+          style={{maxHeight: '100vh'}}
           sizes={data.bgImage.childImageSharp.sizes}
         />
       </div>

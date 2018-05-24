@@ -11,5 +11,9 @@
 }
 
 .largeHeight {
-  height: 70vh;
+  height: 100vh;
+}
+
+@media(max-width: 1000px) {
+
 }
