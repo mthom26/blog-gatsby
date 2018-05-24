@@ -7,6 +7,7 @@ import styles from './BlogPost.module.css';
 const BlogPost = ({ postData }) => {
   // console.log(postData);
   return (
+    <div className={styles.test}>
     <Link to={postData.slug}>
       <div className={styles.blogpost}>
         <div className={styles.imageContainer}>
@@ -23,6 +24,7 @@ const BlogPost = ({ postData }) => {
         </div>
       </div>
     </Link>
+    </div>
   );
 };
 
