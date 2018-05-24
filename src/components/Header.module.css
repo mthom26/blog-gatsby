@@ -3,6 +3,9 @@
   display: flex;
   justify-content: space-between;
   background: #222222;
+  position: fixed;
+  z-index: 10;
+  width: 100%;
 }
 
 .logo {
@@ -20,7 +23,12 @@
 .nav a {
   color: #f8f8f8;
   text-decoration: none;
-  padding: 0.5rem 1.5rem;
+  padding: 1rem 1.5rem;
+  transition: background-color 150ms linear;
+}
+
+.nav a:hover {
+  background: rgba(255,255,255, 0.4);
 }
 
 .menuButton {
@@ -47,7 +55,7 @@
     position: absolute;
     width: 100%;
     top: 3rem;
-    background: #222222;
+    background: rgba(0,0,0,0.5);
     transition: transform 300ms ease-in-out;
   }
 
