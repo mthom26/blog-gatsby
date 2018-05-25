@@ -1,5 +1,10 @@
 .headerWrapper {
   overflow: hidden;
+  position: relative;
+}
+
+.outerWrapperClassName {
+  height: 100%;
 }
 
 .zeroHeight {
@@ -7,7 +12,7 @@
 }
 
 .smallHeight {
-  height: 30vh;
+  height: 40vh;
 }
 
 .largeHeight {

@@ -20,12 +20,12 @@ class HeaderImage extends React.Component {
     if(pathname === '/') {
       newHeight = '100vh';
     } else if(pathname === '/blog' || pathname === '/about') {
-      newHeight = '30vh';
+      newHeight = '40vh';
     }
     if(prevpathname === '/') {
       oldHeight = '100vh';
     } else if(prevpathname === '/blog' || prevpathname === '/about') {
-      oldHeight = '30vh';
+      oldHeight = '40vh';
     }
 
     // animate from the old height to the new height
@@ -60,7 +60,8 @@ class HeaderImage extends React.Component {
         className={`${styles.headerWrapper} ${headerHeight}`}
       >
         <Img
-          style={{maxHeight: '100vh'}}
+          outerWrapperClassName={styles.outerWrapperClassName}
+          style={{height: '100%'}}
           sizes={data.bgImage.childImageSharp.sizes}
         />
       </div>
