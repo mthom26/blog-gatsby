@@ -11,7 +11,7 @@ class HeaderImage extends React.Component {
   }
   
   returnContent(pathname) {
-    console.log(pathname);
+    //console.log(pathname);
     if(pathname === '/') {
       return (
         <div className={`${styles.headerImageContent}`}>

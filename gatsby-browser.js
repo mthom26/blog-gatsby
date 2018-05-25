@@ -31,10 +31,14 @@ exports.replaceHistory = () => history;
 class ReplaceComponentRenderer extends React.Component {
   constructor(props) {
     super(props);
-
+    
     this.state = {
       exiting: false,
-      nextPageResources: {}
+      nextPageResources: {},
+      paths: {
+        current: props.location.pathname,
+        next: ''
+      }
     };
 
     this.listenerHandler = this.listenerHandler.bind(this);
@@ -57,15 +61,22 @@ class ReplaceComponentRenderer extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    //console.log(this.props.location);
-    //console.log(nextProps.location);
+    //console.log(`Location: ${this.props.location.pathname}`);
+    //console.log(`Next Location: ${nextProps.location.pathname}`);
     if (this.props.location.key !== nextProps.location.key) {
-      this.setState({ exiting: false, nextPageResources: {} })
+      this.setState({
+        exiting: false,
+        nextPageResources: {},
+        paths: {
+          current: this.props.location.pathname,
+          next: nextProps.location.pathname
+        }
+      });
     }
   }
   // Can't query for graphql data here so <HeaderImage /> won't work?
   render() {
-    //console.log(this.props);
+    //console.log(this.state.paths);
     const transitionProps = {
       timeout: {
         enter: 0,
@@ -75,6 +86,8 @@ class ReplaceComponentRenderer extends React.Component {
       in: !this.state.exiting,
       key: this.props.location.key,
     };
+
+    const { paths } = this.state;
     /*
     const Page = React.createElement(this.props.pageResources.component, {
       ...this.props,
@@ -91,7 +104,7 @@ class ReplaceComponentRenderer extends React.Component {
               transition: {
                 status,
                 timeout,
-                style: getTransition({ status, timeout }),
+                style: getTransition({ status, timeout, paths }),
                 nextPageResources: this.state.nextPageResources,
               },
             })
