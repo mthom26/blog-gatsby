@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Img from 'gatsby-image';
+import Link from 'gatsby-link';
 
 import styles from './HeaderImage.module.css';
 
@@ -8,7 +9,27 @@ class HeaderImage extends React.Component {
   constructor(props) {
     super(props);
   }
- 
+  
+  returnContent(pathname) {
+    console.log(pathname);
+    if(pathname === '/') {
+      return (
+        <div className={`${styles.headerImageContent}`}>
+          <h1>Welcome!</h1>
+          <h2>This is a test blog built using Gatsby.</h2>
+          <Link to="/blog">View Blogposts</Link>
+        </div>
+      );
+    } else if(pathname === '/blog') {
+      return (
+        <div className={`${styles.headerImageContent} ${styles.headerImageContentBlog}`}>
+          <h2>Blog Section</h2>
+        </div>
+      );
+    }
+    return null;
+  }
+
   componentDidUpdate(prevProps, prevState) {
     // Header Image component should adjust height based on the current path
     const { pathname } = this.props.location;
@@ -45,7 +66,9 @@ class HeaderImage extends React.Component {
   render() {
     const { location, data } = this.props;
     const { pathname } = location;
-    // console.log(location);
+
+    const content = this.returnContent(pathname);
+
     let headerHeight = styles.zeroHeight;
 
     if(pathname === '/') {
@@ -59,6 +82,7 @@ class HeaderImage extends React.Component {
         ref={(wrapper) => this.wrapper = ReactDOM.findDOMNode(wrapper)}
         className={`${styles.headerWrapper} ${headerHeight}`}
       >
+        {content}
         <Img
           outerWrapperClassName={styles.outerWrapperClassName}
           style={{height: '100%'}}
