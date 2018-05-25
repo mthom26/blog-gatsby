@@ -27,6 +27,13 @@ class HeaderImage extends React.Component {
         </div>
       );
     }
+    else if(pathname === '/about') {
+      return (
+        <div className={`${styles.headerImageContent} ${styles.headerImageContentAbout}`}>
+          <h2>About Section</h2>
+        </div>
+      );
+    }
     return null;
   }
 
