@@ -2,9 +2,6 @@ import React, { createElement } from 'react';
 import { Transition } from "react-transition-group";
 import createHistory from "history/createBrowserHistory";
 
-//import Header from './src/components/Header';
-//import Footer from './src/components/Footer';
-//import HeaderImage from './src/components/HeaderImage';
 import getTransition from './src/utils/getTransition';
 
 const timeout = 1000;
@@ -37,7 +34,11 @@ class ReplaceComponentRenderer extends React.Component {
       nextPageResources: {},
       paths: {
         current: props.location.pathname,
-        next: ''
+        next: props.location.pathname
+      },
+      newPaths: {
+        current: this.props.location.pathname,
+        next: this.props.location.pathname
       }
     };
 
@@ -47,9 +48,17 @@ class ReplaceComponentRenderer extends React.Component {
   listenerHandler(event) {
     const nextPageResources = this.props.loader.getResourcesForPathname(
       event.detail.pathname,
-      nextPageResources => this.setState({ nextPageResources })
+      nextPageResources => this.setState({
+        nextPageResources: nextPageResources,
+        newPaths: {
+          current: this.props.location.pathname,
+          next: nextPageResources.page.path
+        },
+        exiting: true
+      })
     ) || {}
-    this.setState({ exiting: true, nextPageResources })
+    //this.setState({ exiting: true, nextPageResources })
+    //console.log(nextPageResources);
   }
 
   componentDidMount() {
@@ -61,22 +70,27 @@ class ReplaceComponentRenderer extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    //console.log(`Location: ${this.props.location.pathname}`);
-    //console.log(`Next Location: ${nextProps.location.pathname}`);
+    // Need to decide on transition type here, the problem is react renders
+    // twice, once for the current pair of locations then for the new pair.
+    // Need to prevent the first re render with the old pair of props
+    //console.log(this.props);
+    //console.log(nextProps);
+    
     if (this.props.location.key !== nextProps.location.key) {
-      this.setState({
+      this.setState(() => ({
         exiting: false,
         nextPageResources: {},
         paths: {
           current: this.props.location.pathname,
           next: nextProps.location.pathname
         }
-      });
+      }));
     }
   }
-  // Can't query for graphql data here so <HeaderImage /> won't work?
+  
   render() {
-    
+    console.log('--------------------------');
+    //console.log(this.state.newPaths);
     const transitionProps = {
       timeout: {
         enter: 0,
@@ -87,8 +101,7 @@ class ReplaceComponentRenderer extends React.Component {
       key: this.props.location.key,
     };
 
-    const { paths } = this.state;
-    console.log(paths);
+    const paths = this.state.newPaths;
     
     return(
       <div>
