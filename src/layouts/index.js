@@ -61,7 +61,7 @@ const Layout = (props) => {
         <Header />
         <HeaderImage location={location} data={data}/>
         {props.children()}
-        <Footer />
+        {location.pathname !== '/' && <Footer />}
       </div>
   );
 };
