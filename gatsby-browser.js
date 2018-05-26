@@ -76,7 +76,7 @@ class ReplaceComponentRenderer extends React.Component {
   }
   // Can't query for graphql data here so <HeaderImage /> won't work?
   render() {
-    //console.log(this.state.paths);
+    
     const transitionProps = {
       timeout: {
         enter: 0,
@@ -88,12 +88,8 @@ class ReplaceComponentRenderer extends React.Component {
     };
 
     const { paths } = this.state;
-    /*
-    const Page = React.createElement(this.props.pageResources.component, {
-      ...this.props,
-      ...this.props.pageResources.json
-    });
-    */
+    console.log(paths);
+    
     return(
       <div>
         <Transition {...transitionProps}>
