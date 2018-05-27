@@ -22,14 +22,14 @@ class HeaderImage extends React.Component {
       );
     } else if(pathname === '/blog') {
       return (
-        <div className={`${styles.headerImageContent} ${styles.headerImageContentBlog}`}>
+        <div className={`${styles.headerImageContentBlog}`}>
           <h2>Blog Section</h2>
         </div>
       );
     }
     else if(pathname === '/about') {
       return (
-        <div className={`${styles.headerImageContent} ${styles.headerImageContentAbout}`}>
+        <div className={`${styles.headerImageContentAbout}`}>
           <h2>About Section</h2>
         </div>
       );
@@ -68,6 +68,19 @@ class HeaderImage extends React.Component {
         iterations: 1
       });
     }
+
+    // To get an animation on the way out also may need to simply render all 
+    // three tpes of content (home, blog, about) on top of each other and just 
+    // change the opacity values for each one.
+    this.content.animate([
+      { opacity: 0 },
+      { opacity: 1 }
+    ], {
+      duration: 800,
+      fill: 'forwards',
+      easing: 'ease-in-out',
+      iterations: 1
+    })
   }
 
   render() {
@@ -89,9 +102,15 @@ class HeaderImage extends React.Component {
         ref={(wrapper) => this.wrapper = ReactDOM.findDOMNode(wrapper)}
         className={`${styles.headerWrapper} ${headerHeight}`}
       >
-        <div>
-          {content}
+        <div className={styles.outer}>
+          <div
+            ref={(content) => this.content = ReactDOM.findDOMNode(content)}
+            className={styles.inner}
+          >
+            {content}
+          </div>
         </div>
+        
         <Img
           outerWrapperClassName={styles.outerWrapperClassName}
           style={{height: '100%'}}
