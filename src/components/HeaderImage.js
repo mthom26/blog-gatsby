@@ -89,7 +89,9 @@ class HeaderImage extends React.Component {
         ref={(wrapper) => this.wrapper = ReactDOM.findDOMNode(wrapper)}
         className={`${styles.headerWrapper} ${headerHeight}`}
       >
-        {content}
+        <div>
+          {content}
+        </div>
         <Img
           outerWrapperClassName={styles.outerWrapperClassName}
           style={{height: '100%'}}
