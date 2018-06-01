@@ -1,0 +1,14 @@
+.footer {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  background: #232323;
+}
+
+.imageDiv { 
+  margin: 1.5rem 2.5rem;
+}
+
+.imageDiv img {
+  margin: 0;
+}
