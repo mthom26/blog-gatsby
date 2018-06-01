@@ -8,9 +8,14 @@ const getTransitionType = (paths) => {
   }
   prev = parseInt(prev.slice(1));
   
-  const next = parseInt(paths.next.split('-')[0].slice(1));
-  console.log(`prev: ${prev}`);
-  console.log(`next: ${next}`);
+  const nextPath = paths.next;
+  if(nextPath === '/' || nextPath === '/blog' || nextPath === '/about') {
+    return 'fadeIn';
+  }
+  
+  const next = parseInt(nextPath.split('-')[0].slice(1));
+  // console.log(`prev: ${prev}`);
+  // console.log(`next: ${next}`);
   
   if(next > prev) {
     return 'slideFromRight';
@@ -22,10 +27,11 @@ const getTransitionType = (paths) => {
 
 const getTransitionStyles = (timeout, paths) => {
   const path = paths.next;
+  //console.log(paths);
   
   if(path === '/about' || path === '/about/') {
     return transitions(timeout).fadeIn
-  } else if(path === '/blog' || path === '/blog/') {
+  } else if((path === '/blog' || path === '/blog/') && paths.current === '/') {
     return transitions(timeout).slideFromBottom
   } else if(path === '/') {
     return transitions(timeout).fadeIn
