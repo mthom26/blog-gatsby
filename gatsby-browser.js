@@ -89,7 +89,7 @@ class ReplaceComponentRenderer extends React.Component {
   }
   
   render() {
-    console.log('--------------------------');
+    //console.log('--------------------------');
     //console.log(this.state.newPaths);
     const transitionProps = {
       timeout: {

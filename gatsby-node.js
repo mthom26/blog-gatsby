@@ -38,7 +38,9 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             context: {
               slug: node.slug,
               prev: index === 0 ? null : posts[index-1].node,
-              next: index === (posts.length - 1) ? null : posts[index+1].node
+              prevSlug: index === 0 ? null : posts[index-1].node.slug,
+              next: index === (posts.length - 1) ? null : posts[index+1].node,
+              nextSlug: index === (posts.length - 1) ? null : posts[index+1].node.slug,
             }
           });
         });

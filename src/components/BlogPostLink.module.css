@@ -1,0 +1,8 @@
+.blogPostLink {
+  width: 50%;
+  border: 1px solid cyan;
+}
+
+.blogPostLinkContainer {
+  position: relative;
+}
