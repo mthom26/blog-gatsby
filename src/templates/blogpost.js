@@ -29,19 +29,17 @@ class BlogPost extends React.Component {
         <Container>
           <h2>{current.title}</h2>
           <p>{current.createdAt}</p>
-          <p>{current.body.body}</p>
+
+          <div
+          dangerouslySetInnerHTML={{
+            __html: current.body.childMarkdownRemark.html
+          }} />
           <hr/>
         </Container>
         <div className={styles.links}>
           {prev && <BlogPostLink text="Previous Post" data={prevData}/>}
           {next && <BlogPostLink text="Next Post" data={nextData}/>}
         </div>
-        {/*
-        <div className={styles.links}>
-          {prev && <Link to={prev.slug}>Previous Post</Link>}
-          {next && <Link to={next.slug}>Next Post</Link>}
-        </div>
-        */}
       </div>
     );
   } 
@@ -54,7 +52,9 @@ export const query = graphql`
       title
       createdAt
       body {
-        body
+        childMarkdownRemark {
+          html
+        }
       }
       coverImage {
         sizes(maxWidth: 1920) {
