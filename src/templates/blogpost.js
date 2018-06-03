@@ -33,8 +33,8 @@ class BlogPost extends React.Component {
           <hr/>
         </Container>
         <div className={styles.links}>
-          {prev && <BlogPostLink data={prevData}/>}
-          {next && <BlogPostLink data={nextData}/>}
+          {prev && <BlogPostLink text="Previous Post" data={prevData}/>}
+          {next && <BlogPostLink text="Next Post" data={nextData}/>}
         </div>
         {/*
         <div className={styles.links}>

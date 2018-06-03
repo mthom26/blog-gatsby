@@ -1,8 +1,25 @@
 .blogPostLink {
   width: 50%;
-  border: 1px solid cyan;
 }
 
 .blogPostLinkContainer {
   position: relative;
+  z-index: 5;
+}
+
+.content {
+  position: absolute;
+  background: rgba(0,0,0,0.5);
+  z-index: 6;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  transition: background-color 150ms linear;
+}
+
+.content:hover {
+  background: rgba(0,0,0,0.2);
 }
