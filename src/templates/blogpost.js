@@ -19,6 +19,7 @@ class BlogPost extends React.Component {
     const { current, nextData, prevData } = data;
     
     return (
+      <div className={styles.container}>
       <div
         style={transition && transition.style}
       >
@@ -43,6 +44,7 @@ class BlogPost extends React.Component {
           {prev && <BlogPostLink text="Previous Post" data={prevData}/>}
           {next && <BlogPostLink text="Next Post" data={nextData}/>}
         </div>
+      </div>
       </div>
     );
   } 

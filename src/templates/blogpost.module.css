@@ -3,6 +3,10 @@
   justify-content: center;
 }
 
+.container {
+  overflow-x: hidden;
+}
+
 .content {
   margin: 3rem 0.5rem;
 }
