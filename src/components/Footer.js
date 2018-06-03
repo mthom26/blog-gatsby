@@ -10,13 +10,19 @@ const Footer = () => {
   return (
     <div className={styles.footer}>
       <div className={styles.imageDiv}>
-        <img src={GatsbyIcon} alt="Gatsby" height="35px"/>
+        <a href="https://www.gatsbyjs.org/" target="_blank">
+          <img src={GatsbyIcon} alt="Gatsby" height="35px"/>
+        </a>
       </div>
       <div className={styles.imageDiv}>
-        <img src={ContentfulIcon} alt="ContentfulIcon" height="35px"/>
+        <a href="https://www.contentful.com/" target="_blank">
+          <img src={ContentfulIcon} alt="ContentfulIcon" height="35px"/>
+        </a>
       </div>
       <div className={styles.imageDiv}>
-        <img src={GithubIcon} alt="GithubIcon" height="35px"/>
+        <a href="https://github.com/mthom26/blog-gatsby" target="_blank">
+          <img src={GithubIcon} alt="GithubIcon" height="35px"/>
+        </a>
       </div>
     </div>
   );

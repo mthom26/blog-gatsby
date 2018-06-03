@@ -12,3 +12,9 @@
 .imageDiv img {
   margin: 0;
 }
+
+@media(max-width: 450px) {
+  .imageDiv {
+    margin: 1rem 0.75rem;
+  }
+}

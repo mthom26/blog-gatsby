@@ -11,11 +11,16 @@ class Header extends React.Component {
     };
 
     this.toggleNav = this.toggleNav.bind(this);
+    this.dismissNav = this.dismissNav.bind(this);
   }
 
   toggleNav() {
     const hideNav = this.state.hideNav;
     this.setState({hideNav: !hideNav});
+  }
+
+  dismissNav() {
+    this.setState({ hideNav: true });
   }
 
   render() {
@@ -29,9 +34,9 @@ class Header extends React.Component {
           <div className={styles.menuButton} onClick={this.toggleNav}>Menu</div>
         </div>
         <nav className={navStyle}>
-          <Link to="/">Home</Link>
-          <Link to="/blog">Blog</Link>
-          <Link to="/about">About</Link>
+          <Link onClick={this.dismissNav} to="/">Home</Link>
+          <Link onClick={this.dismissNav} to="/blog">Blog</Link>
+          <Link onClick={this.dismissNav} to="/about">About</Link>
         </nav>
       </div>
     );

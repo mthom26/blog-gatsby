@@ -23,18 +23,21 @@ class BlogPost extends React.Component {
         style={transition && transition.style}
       >
         <Img
-          style={{minHeight: '40vh'}}
+          style={{minHeight: '60vh'}}
           sizes={current.coverImage.sizes}  
         />
         <Container>
-          <h2>{current.title}</h2>
-          <p>{current.createdAt}</p>
+          <div className={styles.content}>
+            <h2 className={styles.title}>{current.title}</h2>
+            <span className={styles.date}>{current.createdAt}</span>
 
-          <div
-          dangerouslySetInnerHTML={{
-            __html: current.body.childMarkdownRemark.html
-          }} />
-          <hr/>
+            <div
+            className={styles.contentHtml}
+            dangerouslySetInnerHTML={{
+              __html: current.body.childMarkdownRemark.html
+            }} />
+            <hr/>
+          </div>
         </Container>
         <div className={styles.links}>
           {prev && <BlogPostLink text="Previous Post" data={prevData}/>}
@@ -50,7 +53,7 @@ export const query = graphql`
   query BlogPostQuery($slug: String!, $nextSlug: String, $prevSlug: String) {
     current: contentfulBlogPost(slug: { eq: $slug }) {
       title
-      createdAt
+      createdAt (formatString: "DD MMMM YYYY")
       body {
         childMarkdownRemark {
           html

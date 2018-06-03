@@ -2,3 +2,25 @@
   display: flex;
   justify-content: center;
 }
+
+.content {
+  margin: 3rem 0.5rem;
+}
+
+.title {
+  margin-bottom: 0.5rem;
+}
+
+.date {
+  opacity: 0.5;
+}
+
+.contentHtml {
+  margin: 3rem 0;
+}
+
+@media(max-width: 550px) {
+  .links {
+    flex-direction: column;
+  }
+}

@@ -1,5 +1,6 @@
 .blogPostLink {
   width: 50%;
+  overflow: hidden;
 }
 
 .blogPostLinkContainer {
@@ -22,4 +23,15 @@
 
 .content:hover {
   background: rgba(0,0,0,0.2);
+}
+
+@media(max-width: 550px) {
+  .blogPostLink {
+    width: 100%;
+    height: 20vh;
+  }
+
+  .content {
+    height: 20vh;
+  }
 }

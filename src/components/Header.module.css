@@ -33,12 +33,17 @@
 
 .menuButton {
   cursor: pointer;
+  display: none;
 }
 
 @media(max-width: 700px) {
   .header {
     padding: 0;
     flex-direction: column;
+  }
+
+  .menuButton {
+    display: block;
   }
 
   .logo {
