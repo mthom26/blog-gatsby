@@ -20,31 +20,31 @@ class BlogPost extends React.Component {
     
     return (
       <div className={styles.container}>
-      <div
-        style={transition && transition.style}
-      >
-        <Img
-          style={{minHeight: '60vh'}}
-          sizes={current.coverImage.sizes}  
-        />
-        <Container>
-          <div className={styles.content}>
-            <h2 className={styles.title}>{current.title}</h2>
-            <span className={styles.date}>{current.createdAt}</span>
+        <div
+          style={transition && transition.style}
+        >
+          <Img
+            style={{minHeight: '60vh'}}
+            sizes={current.coverImage.sizes}  
+          />
+          <Container>
+            <div className={styles.content}>
+              <h2 className={styles.title}>{current.title}</h2>
+              <span className={styles.date}>{current.createdAt}</span>
 
-            <div
-            className={styles.contentHtml}
-            dangerouslySetInnerHTML={{
-              __html: current.body.childMarkdownRemark.html
-            }} />
-            <hr/>
+              <div
+              className={styles.contentHtml}
+              dangerouslySetInnerHTML={{
+                __html: current.body.childMarkdownRemark.html
+              }} />
+              <hr/>
+            </div>
+          </Container>
+          <div className={styles.links}>
+            {prev && <BlogPostLink text="Previous Post" data={prevData}/>}
+            {next && <BlogPostLink text="Next Post" data={nextData}/>}
           </div>
-        </Container>
-        <div className={styles.links}>
-          {prev && <BlogPostLink text="Previous Post" data={prevData}/>}
-          {next && <BlogPostLink text="Next Post" data={nextData}/>}
         </div>
-      </div>
       </div>
     );
   } 
