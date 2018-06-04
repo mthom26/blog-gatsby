@@ -13,6 +13,7 @@ const defaultStyle = {
   opacity: 0
 };
 
+/*------------------------------------------------------------- */
 const getUserConfirmation = (pathname, callback) => {
   const event = new CustomEvent(historyExitingEventType, { detail: { pathname } })
   window.dispatchEvent(event)
@@ -24,6 +25,7 @@ const history = createHistory({ getUserConfirmation });
 // block must return a string to conform
 history.block((location, action) => location.pathname);
 exports.replaceHistory = () => history;
+/*------------------------------------------------------------- */
 
 class ReplaceComponentRenderer extends React.Component {
   constructor(props) {
@@ -33,10 +35,6 @@ class ReplaceComponentRenderer extends React.Component {
       exiting: false,
       nextPageResources: {},
       paths: {
-        current: props.location.pathname,
-        next: props.location.pathname
-      },
-      newPaths: {
         current: this.props.location.pathname,
         next: this.props.location.pathname
       }
@@ -46,19 +44,19 @@ class ReplaceComponentRenderer extends React.Component {
   }
 
   listenerHandler(event) {
+    // User clicked navigiting to new page so get the next page resources and 
+    // set exiting to true to play exit animation
     const nextPageResources = this.props.loader.getResourcesForPathname(
       event.detail.pathname,
       nextPageResources => this.setState({
         nextPageResources: nextPageResources,
-        newPaths: {
+        paths: {
           current: this.props.location.pathname,
           next: nextPageResources.page.path
         },
         exiting: true
       })
     ) || {}
-    //this.setState({ exiting: true, nextPageResources })
-    //console.log(nextPageResources);
   }
 
   componentDidMount() {
@@ -70,27 +68,18 @@ class ReplaceComponentRenderer extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // Need to decide on transition type here, the problem is react renders
-    // twice, once for the current pair of locations then for the new pair.
-    // Need to prevent the first re render with the old pair of props
-    //console.log(this.props);
-    //console.log(nextProps);
-    
+    // When the component updates check if the new page has entered, if it has 
+    // set exiting to false which will play the entry animation for the next 
+    // page resources
     if (this.props.location.key !== nextProps.location.key) {
       this.setState(() => ({
         exiting: false,
-        nextPageResources: {},
-        paths: {
-          current: this.props.location.pathname,
-          next: nextProps.location.pathname
-        }
+        nextPageResources: {}
       }));
     }
   }
   
   render() {
-    //console.log('--------------------------');
-    //console.log(this.state.newPaths);
     const transitionProps = {
       timeout: {
         enter: 0,
@@ -101,7 +90,7 @@ class ReplaceComponentRenderer extends React.Component {
       key: this.props.location.key,
     };
 
-    const paths = this.state.newPaths;
+    const paths = this.state.paths;
     
     return(
       <div>

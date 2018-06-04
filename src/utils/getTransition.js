@@ -3,19 +3,19 @@ import transitions from './transitions';
 const getTransitionType = (paths) => {
   let prev = paths.current.split('-')[0];
   
+  // Previous path was not a blogpost so just return fade transition
   if(prev === '/' || prev === '/blog' || prev === '/about') {
     return 'fadeIn';
   }
   prev = parseInt(prev.slice(1));
   
   const nextPath = paths.next;
+  // Next path is not a blogpost so just return fade transition
   if(nextPath === '/' || nextPath === '/blog' || nextPath === '/about') {
     return 'fadeIn';
   }
   
   const next = parseInt(nextPath.split('-')[0].slice(1));
-  // console.log(`prev: ${prev}`);
-  // console.log(`next: ${next}`);
   
   if(next > prev) {
     return 'slideFromRight';
@@ -27,7 +27,6 @@ const getTransitionType = (paths) => {
 
 const getTransitionStyles = (timeout, paths) => {
   const path = paths.next;
-  //console.log(paths);
   
   if(path === '/about' || path === '/about/') {
     return transitions(timeout).fadeIn
@@ -37,10 +36,7 @@ const getTransitionStyles = (timeout, paths) => {
     return transitions(timeout).fadeIn
   } else {
     // we are on a blog post so decide on left or right slide here
-    // not going to work, the transition must be decided at the 
-    // time of the user click (from gatsby-browser)
     const transitionType = getTransitionType(paths);
-    //console.log(transitionType);
     return transitions(timeout)[transitionType];
   }
 }
