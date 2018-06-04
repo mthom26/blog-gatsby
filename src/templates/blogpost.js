@@ -30,7 +30,7 @@ class BlogPost extends React.Component {
           <Container>
             <div className={styles.content}>
               <h2 className={styles.title}>{current.title}</h2>
-              <span className={styles.date}>{current.createdAt}</span>
+              <span className={styles.date}>{current.date}</span>
 
               <div
               className={styles.contentHtml}
@@ -55,7 +55,7 @@ export const query = graphql`
   query BlogPostQuery($slug: String!, $nextSlug: String, $prevSlug: String) {
     current: contentfulBlogPost(slug: { eq: $slug }) {
       title
-      createdAt (formatString: "DD MMMM YYYY")
+      date (formatString: "DD MMMM YYYY")
       body {
         childMarkdownRemark {
           html
@@ -70,7 +70,7 @@ export const query = graphql`
 
     nextData: contentfulBlogPost(slug: { eq: $nextSlug }) {
       title
-      createdAt
+      date
       slug
       body {
         body
@@ -84,7 +84,7 @@ export const query = graphql`
 
     prevData: contentfulBlogPost(slug: { eq: $prevSlug }) {
       title
-      createdAt
+      date
       slug
       body {
         body

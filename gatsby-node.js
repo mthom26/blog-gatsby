@@ -10,7 +10,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       graphql(
         `
         {
-          allContentfulBlogPost {
+          allContentfulBlogPost(sort: { fields: date, order: DESC}) {
             edges {
               node {
                 title
@@ -18,7 +18,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                 body {
                   body
                 }
-                createdAt
+                date
               }
             }
           }
@@ -37,10 +37,10 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
             component: blogPostTemplate,
             context: {
               slug: node.slug,
-              prev: index === 0 ? null : posts[index-1].node,
-              prevSlug: index === 0 ? null : posts[index-1].node.slug,
-              next: index === (posts.length - 1) ? null : posts[index+1].node,
-              nextSlug: index === (posts.length - 1) ? null : posts[index+1].node.slug,
+              prev: index === 0 ? posts[posts.length -1].node : posts[index-1].node,
+              prevSlug: index === 0 ? posts[posts.length -1].node.slug : posts[index-1].node.slug,
+              next: index === (posts.length - 1) ? posts[0].node : posts[index+1].node,
+              nextSlug: index === (posts.length - 1) ? posts[0].node.slug : posts[index+1].node.slug
             }
           });
         });

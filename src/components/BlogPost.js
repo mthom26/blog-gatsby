@@ -19,7 +19,7 @@ const BlogPost = ({ postData }) => {
         </div>
           
         <div className={styles.content}>
-          <span className={styles.date}>{postData.createdAt}</span>
+          <span className={styles.date}>{postData.date}</span>
           <p>{postData.excerpt.excerpt}</p>
         </div>
       </div>
