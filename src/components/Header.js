@@ -1,5 +1,8 @@
 import React from 'react';
 import Link from 'gatsby-link';
+
+import menuIcon from '../images/menuIcon.svg';
+import logo from '../images/logo.svg';
 import styles from './Header.module.css';
 
 class Header extends React.Component {
@@ -29,9 +32,12 @@ class Header extends React.Component {
       ? `${styles.nav} ${styles.navHidden}` : `${styles.nav}`;
     return (
       <div className={styles.header}>
-        <div className={styles.logo}>
-          <div>LOGO</div>
-          <div className={styles.menuButton} onClick={this.toggleNav}>Menu</div>
+        <div className={styles.logoContainer}>
+          {/* <div className={styles.Logo}>LOGO</div> */}
+          <img src={logo} className={styles.logo}/>
+          <img src={menuIcon} className={styles.menuButton} onClick={this.toggleNav}/> 
+            
+         
         </div>
         <nav className={navStyle}>
           <Link onClick={this.dismissNav} to="/">Home</Link>
