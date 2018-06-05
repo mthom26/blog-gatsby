@@ -15,22 +15,22 @@ class HeaderImage extends React.Component {
     if(pathname === '/') {
       return (
         <div className={`${styles.headerImageContent}`}>
-          <h1>Welcome!</h1>
-          <h2>This is a test blog built using Gatsby.</h2>
+          <h1 className={styles.centered}>Welcome!</h1>
+          <h2 className={styles.centered}>This is a test blog built using Gatsby.</h2>
           <Link to="/blog">View Blogposts</Link>
         </div>
       );
     } else if(pathname === '/blog') {
       return (
         <div className={`${styles.headerImageContentBlog}`}>
-          <h2>Blog Section</h2>
+          <h2 className={styles.centered}>Blog Section</h2>
         </div>
       );
     }
     else if(pathname === '/about') {
       return (
         <div className={`${styles.headerImageContentAbout}`}>
-          <h2>About Section</h2>
+          <h2 className={styles.centered}>About Section</h2>
         </div>
       );
     }

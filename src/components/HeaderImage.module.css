@@ -34,6 +34,7 @@
   border: 2px solid rgba(255,255,255,0.6);
   padding: 0.5rem 1rem;
   transition: border 250ms, box-shadow 250ms, text-shadow 250ms, background-color 250ms;
+  text-align: center;
 }
 
 .headerImageContent a:hover {
@@ -78,6 +79,9 @@
   width: 100%;
 }
 
+.centered {
+  text-align: center;
+}
 
 @media(max-width: 1000px) {
 

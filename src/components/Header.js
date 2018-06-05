@@ -33,8 +33,8 @@ class Header extends React.Component {
     return (
       <div className={styles.header}>
         <div className={styles.logoContainer}>
-          {/* <div className={styles.Logo}>LOGO</div> */}
-          <img src={logo} className={styles.logo}/>
+          <Link onClick={this.dismissNav} to="/"><img src={logo} className={styles.logo}/></Link>
+          
           <img src={menuIcon} className={styles.menuButton} onClick={this.toggleNav}/> 
             
          
